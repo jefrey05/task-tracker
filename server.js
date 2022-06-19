@@ -22,7 +22,11 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 app.get('/',(req,res)=>{
-    res.render('index.ejs')
+    db.collection('tasks').find().toArray()
+    .then(data=>{
+        console.log(data)
+     res.render("index.ejs",{info:data})
+    })
 })
 
 app.listen(process.env.PORT || PORT,()=>{
