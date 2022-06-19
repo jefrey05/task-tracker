@@ -29,6 +29,10 @@ app.get('/',(req,res)=>{
     })
 })
 
+app.post('/addTask',(req,res)=>{
+    console.log(req.body)
+})
+
 app.listen(process.env.PORT || PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
 })

@@ -19,9 +19,9 @@
       
                   <h4 class="text-center my-3 pb-3">To Do App</h4>
       
-                  <form action="/addTask" method = "post" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+                  <form action="/addTask" method = "POST" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                     <div>
-                        <input type="text" id="form1" class="form-control" placeholder="Enter task"/>
+                        <input type="text" id="form1" class="form-control" placeholder="Enter task" name="task"/>
                     </div>
                       
                     <div>
@@ -39,10 +39,11 @@
                       </tr>
                     </thead>
                     <tbody>
-
+                        <% let counter = 1 %>
                         <% for(let i = 0;i < info.length;i++){%>
+                            
                       <tr>
-                        <th scope="row">1</th>
+                        <th scope="row"><%= counter++ %></th>
                         <td><%= info[i].task %></td>
                         <td><%= info[i].status %></td>
                         <td>
