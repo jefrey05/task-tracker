@@ -25,7 +25,7 @@ app.use(express.json())
 app.get('/',(req,res)=>{
     db.collection('tasks').find().toArray()
     .then(data=>{
-        console.log(data)
+       // console.log(data)
      res.render("index.ejs",{info:data})
     })
 })
