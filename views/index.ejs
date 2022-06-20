@@ -44,11 +44,16 @@
                             
                       <tr>
                         <th scope="row"><%= counter++ %></th>
-                        <td><%= info[i].task %></td>
-                        <td><%= info[i].status %></td>
+                        <% if(info[i].status==='In progress'){ %>
+                        <td style="text-decoration: line-through"><%= info[i].task %></td>
+                        <td style="text-decoration: line-through"><%= info[i].status %></td>
+                        <% } else{%>
+                          <td><%= info[i].task %></td>
+                          <td><%= info[i].status %></td>
+                        <%} %>
                         <td>
                           <button type="submit" class="btn btn-danger" id="deleteTask">Delete</button>
-                          <button type="submit" class="btn btn-success ms-1">Finished</button>
+                          <button type="submit" class="btn btn-success ms-1" id="finishedTask">Finished</button>
                         </td>
                       </tr>
                       
@@ -63,5 +68,6 @@
         </div>
       </section>
       <script src="js/delete.js"></script>
+      <script src="js/finish.js"></script>
 </body>
 </html>

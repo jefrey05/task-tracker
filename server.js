@@ -38,10 +38,17 @@ app.post('/addTask',(req,res)=>{
 })
 
 app.delete('/deleteTask',(req,res)=>{
-    console.log(req.body);
-   res.send('hello')
+    db.collection('tasks').deleteOne({task: req.body.task,status: req.body.status})
+    .then(result=>{
+        console.log('Task Deleted');
+        res.json('Task Deleted')
+    })
+    .catch(error=>console.error(error))
 })
 
+app.put('/updateTask',(req,res)=>{
+    res.json('jello')
+})
 app.listen(process.env.PORT || PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
 })
