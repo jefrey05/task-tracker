@@ -6,8 +6,7 @@ Array.from(finishTask).forEach((element)=>{
 
 async function finish(){
     const task = this.parentNode.parentNode.childNodes[3].innerText
-    console.log(task)
-    const underline = task.underline
+    //console.log(task)
     try{
         const response = await fetch('updateTask',{
             method: 'put',
@@ -19,7 +18,7 @@ async function finish(){
         })
         const data = await response.json()
         console.log(data)
-        //location.reload()
+        location.reload()
 
     }catch(err){
         console.log(err)

@@ -47,7 +47,16 @@ app.delete('/deleteTask',(req,res)=>{
 })
 
 app.put('/updateTask',(req,res)=>{
-    res.json('jello')
+   db.collection('tasks').updateOne({task: req.body.task},{
+    $set: {
+        status: 'Finished'
+    }
+   })
+   .then(result=>{
+    console.log("Updated Taks")
+    res.json('Updated task')
+   })
+   .catch(error=> console.error(error))
 })
 app.listen(process.env.PORT || PORT,()=>{
     console.log(`Server is running on port ${PORT}`)

@@ -21,7 +21,7 @@
       
                   <form action="/addTask" method = "POST" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
                     <div>
-                        <input type="text" id="form1" class="form-control" placeholder="Enter task" name="task"/>
+                        <input type="text" id="form1" class="form-control" placeholder="Enter task" name="task" required/>
                     </div>
                       
                     <div>
@@ -43,11 +43,12 @@
                         <% for(let i = 0;i < info.length;i++){%>
                             
                       <tr>
-                        <th scope="row"><%= counter++ %></th>
-                        <% if(info[i].status==='In progress'){ %>
+                        <% if(info[i].status==='Finished'){ %>
+                          <th scope="row"style="text-decoration: line-through" ><%= counter++ %></th>
                         <td style="text-decoration: line-through"><%= info[i].task %></td>
                         <td style="text-decoration: line-through"><%= info[i].status %></td>
                         <% } else{%>
+                          <th scope="row"><%= counter++ %></th>
                           <td><%= info[i].task %></td>
                           <td><%= info[i].status %></td>
                         <%} %>
