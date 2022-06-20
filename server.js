@@ -30,7 +30,16 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/addTask',(req,res)=>{
-    console.log(req.body)
+   db.collection('tasks').insertOne({task:req.body.task,status:'In progress'})
+   .then(result=>{
+    console.log("Task Added")
+    res.redirect('/')
+   })
+})
+
+app.delete('/deleteTask',(req,res)=>{
+    console.log(req.body);
+   res.send('hello')
 })
 
 app.listen(process.env.PORT || PORT,()=>{
