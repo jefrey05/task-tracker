@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
-const PORT = 8080;
 require('dotenv').config();
 const cors = require('cors');
 app.use(cors());
@@ -22,7 +21,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-app.get('/home',(req,res)=>{
+app.get('/',(req,res)=>{
     db.collection('tasks').find().toArray()
     .then(data=>{
        // console.log(data)
@@ -34,7 +33,7 @@ app.post('/addTask',(req,res)=>{
    db.collection('tasks').insertOne({task:req.body.task,status:'In progress'})
    .then(result=>{
     console.log("Task Added")
-    res.redirect('/home')
+    res.redirect('/')
    })
 })
 
@@ -59,6 +58,6 @@ app.put('/updateTask',(req,res)=>{
    })
    .catch(error=> console.error(error))
 })
-app.listen(process.env.PORT || PORT,()=>{
-    console.log(`Server is running on port ${PORT}`)
-})
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
