@@ -4,6 +4,7 @@ const MongoClient = require('mongodb').MongoClient;
 const PORT = 8000;
 require('dotenv').config();
 const cors = require('cors');
+const { restart } = require('nodemon');
 app.use(cors());
 
 let db,
