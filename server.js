@@ -22,7 +22,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-app.get('/',(req,res)=>{
+app.get('/home',(req,res)=>{
     db.collection('tasks').find().toArray()
     .then(data=>{
        // console.log(data)
@@ -34,7 +34,7 @@ app.post('/addTask',(req,res)=>{
    db.collection('tasks').insertOne({task:req.body.task,status:'In progress'})
    .then(result=>{
     console.log("Task Added")
-    res.redirect('/')
+    res.redirect('/home')
    })
 })
 
